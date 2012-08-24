@@ -1,0 +1,20 @@
+<div id='map' style='width:768px;height:400px;'></div>
+<script>
+  $(document).ready(function() {
+    var self = this;
+    var m = mapbox.map('map');
+    m.addLayer(mapbox.layer().id('your map id'));
+    m.zoom(13).center({ lat: 41.386952, lon: 2.170014 });
+    var markerLayer = mapbox.markers.layer();
+    mapbox.markers.interaction(markerLayer);
+    m.addLayer(markerLayer);
+    $.ajax({
+      type: 'GET',
+      url: '/startups/locations',
+      success: function(features) {
+        console.log(features);
+        markerLayer.features(features);
+      }
+    });
+  });
+</script>

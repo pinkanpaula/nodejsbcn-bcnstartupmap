@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="span8">
+    <form class="form-horizontal" action="/startups" method="post">
+      <div class="control-group">
+        <label class="control-label" for="name">Startup Name</label>
+        <div class="controls">
+          <input type="text" id="startupname" name="startupname" placeholder="Startup Name">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="address">Address</label>
+        <div class="controls">
+          <input type="text" id="address" name="address" placeholder="Address">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="address">Location</label>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">Lat</span><input class="span1" name="lat" id="lat" size="6" type="text" placeholder="0">
+          </div>
+          <div class="input-prepend">
+            <span class="add-on">Lon</span><input class="span1" name="lon" id="lon" size="6" type="text" placeholder="0">
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="address">What do you do?</label>
+        <div class="controls">
+          <textarea name="description" rows="3">Cool stuff.</textarea>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">Add me.</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
