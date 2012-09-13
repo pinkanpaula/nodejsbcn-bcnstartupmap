@@ -3,6 +3,12 @@ Barcelona Startup Map
 
 bcnstartupmap started as an introduction to node.js session. It demonstrated how to set up a simple Express 3 node.js app with a few libraries, GET, POST and an AJAX request. A CouchDB is required to run the demo.
 
+### CouchDB view: startups/view 
+    function(doc) {
+      if(doc.jsonType == 'startup') {
+        emit(doc.name, doc);
+      }
+    }
 
 Integrating authentication with passport.js
 -------------------------------------------
@@ -13,6 +19,15 @@ Integrating authentication with passport.js
       h.update(pass);
       h.update(salt);
       return h.digest('base64');
+    };
+    
+    app.response.message = function(type, msg){
+      // reference req.session via the this.req reference
+      var sess = this.req.session;
+      // simply add the msg to an array for later
+      sess.messages = sess.messages || [];
+      sess.messages.push(msg);
+      return this;
     };
     
     passport.use(new LocalStrategy(
