@@ -9,7 +9,10 @@
     "express": "3.0.0rc3",
     "ejs": "*",
     "express-partials": "*",
+    "connect-flash": "0.1.x",
     "nano":"*",
-    "async": "*"
+    "async": "*",
+    "passport": "*",
+    "passport-local": "*"
   }
 }

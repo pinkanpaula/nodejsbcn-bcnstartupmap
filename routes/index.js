@@ -1,6 +1,14 @@
-var nano = require('nano')('http://youririscouch:5984')
+var nano = require('nano')('http://yourcouch.iriscouch.com:5984')
   , db = nano.db.use('startups')
+  , crypto = require('crypto')
   , async = require('async');
+
+hash = function (pass, salt) {
+  var h = crypto.createHash('sha512');
+  h.update(pass);
+  h.update(salt);
+  return h.digest('base64');
+};
 
 exports.index = function(req, res) {
   res.render('index');
@@ -51,5 +59,35 @@ exports.create = function(req, res) {
     } else {
       console.log(error, result);
     }
+  });
+}
+exports.login = function(req, res) {
+  res.render('login');
+}
+
+exports.findByUsername = function(username, callback) {
+  db.get('user:'+username, function(error, result) {
+    callback(null, result);
+  });
+}
+
+exports.signup = function(req, res) {
+  res.render('signup');
+}
+
+exports.register = function(req, res) {
+  var user = {
+    jsonType: 'user',
+    username: req.body.username,
+    password: hash(req.body.password, req.body.username),
+    created_at: new Date(),
+    updated_at: new Date()
+  };
+  db.insert(user, 'user:'+user.username, function(error, result) {
+    console.log(error, result);
+    req.logIn(user, function(error) {
+      console.log(error);
+      res.redirect('/');
+    });
   });
 }
