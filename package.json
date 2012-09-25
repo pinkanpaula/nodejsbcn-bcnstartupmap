@@ -1,15 +1,22 @@
 {
-  "name": "application-name",
+  "name": "bcnstartupmap",
+  "description": "Barcelona Startup Map",
   "version": "0.0.1",
-  "private": true,
+  "subdomain": "bcnstartupmap",
   "scripts": {
-    "start": "node app"
+    "start": "app.js"
+  },
+  "engines": {
+    "node": "v0.6.x"
   },
   "dependencies": {
     "express": "3.0.0rc3",
     "ejs": "*",
     "express-partials": "*",
+    "connect-flash": "0.1.x",
     "nano":"*",
-    "async": "*"
+    "async": "*",
+    "passport": "*",
+    "passport-local": "*"
   }
 }
