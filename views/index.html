@@ -3,7 +3,7 @@
   $(document).ready(function() {
     var self = this;
     var m = mapbox.map('map');
-    m.addLayer(mapbox.layer().id('your map id'));
+    m.addLayer(mapbox.layer().id('yourmapboxid'));
     m.zoom(13).center({ lat: 41.386952, lon: 2.170014 });
     var markerLayer = mapbox.markers.layer();
     mapbox.markers.interaction(markerLayer);

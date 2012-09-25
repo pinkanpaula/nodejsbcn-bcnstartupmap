@@ -26,7 +26,7 @@
   </head>
 
   <body>
-
+    
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -35,11 +35,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Barcelona Startup Map</a>
+          <a class="brand" href="/">Barcelona Startup Map</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="/">Home</a></li>
               <li><a href="/startups/add">Add</a></li>
+              <% if(typeof user != 'undefined') { %>
+                <li><a href="/logout">Logout</a></li>
+              <% } %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -47,6 +50,14 @@
     </div>
 
     <div class="container">
+    
+      <% if (hasMessages) { %>
+        <ul id="messages">
+          <% messages.forEach(function(msg){ %>
+            <li class="<%= msg.type %>"><%= msg.msg %></li>
+          <% }) %>
+        </ul>
+      <% } %>
 
       <%- body %>
 
